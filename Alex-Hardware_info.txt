@@ -1,0 +1,21 @@
+BIOSVersion     ===> N1VET28W (1.18 )     
+Serial#         ===> R90MFRE9             
+dGPU            ===> 02:00.0 3D controller [0302]: NVIDIA Corporation GM108GLM [Quadro M520 Mobile] [10de:137b] (rev a2) 
+Camera          ===> 13d3:5619 IMC Networks  
+GPUsubSystemID  ===> Subsystem: Lenovo Device [17aa:2248] 
+CardReader      ===> 0bda:0316 Realtek Semiconductor Corp.  
+TouchScreen     ===> 040b:2013 Weltrend Semiconductor  
+FingerPrint     ===> Please check from BIOS 
+VGA             ===> 00:02.0 VGA compatible controller [0300]: Intel Corporation HD Graphics 620 [8086:5916] (rev 02) 
+EC              ===> Please check from BIOS 
+WWAN            ===> Please check from BIOS 
+Wireless        ===> 04:00.0 Network controller [0280]: Intel Corporation Wireless 8265 / 8275 [8086:24fd] (rev 78) 
+Touchpad        ===> SynPS/2 Synaptics TouchPad 
+EthernetMac     ===> 54:ee:75:be:a5:e6    
+Memory          ===> 15.3925G             
+ModeName        ===> ThinkPad P51s        
+MTM             ===> Please check from BIOS 
+Ethernet        ===> 00:1f.6 Ethernet controller [0200]: Intel Corporation Ethernet Connection (4) I219-LM [8086:15d7] (rev 21) 
+Audio           ===> 00:1f.3 Audio device [0403]: Intel Corporation Sunrise Point-LP HD Audio [8086:9d71] (rev 21) 
+CPU             ===> Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz 
+Bluetooth       ===> 8087:0a2b Intel Corp.  
