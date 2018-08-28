@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#/usr/bin/python3.5
 
 #Alex Wen created this script on 2018-01-14 for v0.1
 #       Collect hard info: BIOS Version,ModeName,TouchScreen,Camera,dGPU,iGPU,GPUsubSystemID,CarderReader,Network,Bluetooth,Serial#,Touchpad,Memory,EthernetMac,Ethernet,Audio,CPU
@@ -23,6 +23,10 @@ DevInfo = {}
 hostname = commands.getoutput('hostname')
 filename = hostname + '-Hardware_info.txt'   #The hardware info recorded to the file
 
+def Command():
+    pass
+    
+
 #This class is for lspci command to get the hardware info
 class GetInfoFrlspci(object):
     def __init__(self,devStr,devlist = ""):
@@ -35,8 +39,21 @@ class GetInfoFrlspci(object):
     def getHWfromlist(self):
         return self.getContent()
 
+    def addSameItem(self,item):
+        for line in f.readlines():
+            if item in line:
+            	if DevInfo.has_key(item):
+            	    old = DevInfo[item].strip()
+               	    new = old + ' ' + '+' + ' ' + line.strip()
+              	    DevInfo[item] = new
+                else:
+                    DevInfo[item] = line
+		return DevInfo
+
     def addItem2Dict(self,dic,key,value):
         if not dic.has_key(key):
+	    #if key == 'VGA':
+	    #    self.addSameItem(self,key)
             if key == "3D controller" or key == "Display":
                 key = "dGPU"
             if key == "Network":
@@ -98,6 +115,10 @@ def getiHWfrproc(*args):
             lsusb.gethw('Video Streaming','Camera')
         if item.lower() == "cardreader":
             lsusb.gethw('Mass Storage','CardReader')
+	    if DevInfo.has_key('CardReader'):
+	        pass
+	    else:
+		DevInfo['CardReader']= commands.getoutput("""lspci -nnn|grep -i Card""")
         if item.lower() == "touchscreen":
             lsusb.gethw('Human Interface Device','TouchScreen')
     return DevInfo    
@@ -110,7 +131,7 @@ def main():
     DevInfo["Serial#"] = commands.getoutput("sudo dmidecode -s system-serial-number")
     DevInfo["BIOSVersion"] = commands.getoutput("sudo dmidecode -s bios-version")
     DevInfo["ModeName"] = commands.getoutput("sudo dmidecode -s System-Version")
-
+    DevInfo["NVME"] = commands.getoutput("""lspci -nnn |grep "Non-Volatile memory controller"|awk -F":" '{print $3}' """)
     #Following items should be checked from BIOS
     DevInfo['MTM'] = "Please check from BIOS"
     DevInfo['EC'] = "Please check from BIOS"
